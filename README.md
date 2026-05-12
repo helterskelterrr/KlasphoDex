@@ -24,6 +24,20 @@ flutter run --dart-define=OPENROUTER_API_KEY=your_openrouter_key
 
 For convenience during the class demo, the app also reads `OPENROUTER_API_KEY` from the local `.env` asset when no dart define is provided. This calls free OpenRouter vision models directly from Flutter, starting with Gemma and falling back to Nemotron when the Gemma providers are rate-limited. Do not ship this direct-key setup for production apps, because client app secrets can be extracted from builds.
 
+## Core Technology: AI & Computer Vision
+
+CreatureLens uses a hybrid approach to bridge the gap between real-time feedback and high-fidelity creativity:
+
+### 1. On-Device Real-Time Scanning (ML Kit)
+*   **Purpose:** Provides immediate, low-latency object recognition during the live camera preview.
+*   **Implementation:** Uses `google_mlkit_image_labeling` to detect objects locally on the device without internet calls.
+*   **Stabilization:** Includes a custom `ScanLabelStabilizer` that requires consistent detection across multiple frames before "locking" on a target to prevent UI flickering.
+
+### 2. Generative Vision Analysis (OpenRouter)
+*   **Purpose:** Deeply analyzes the captured photo to "hallucinate" a fantasy creature based on visual features (color, texture, shape).
+*   **Implementation:** Sends the high-res image and ML Kit labels to OpenRouter (e.g., Gemini 1.5 Flash) via Cloud Functions or direct API calls.
+*   **Result:** Transforms a mundane object (like a "Coffee Cup") into a unique collectible creature (like a "Java Golem").
+
 ## Demo Scope
 
 This repository's runtime app is the Flutter Android app. The `UI/` folder is a design prototype/reference from the UI exploration phase, not part of the demo build path.
