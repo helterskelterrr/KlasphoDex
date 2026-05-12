@@ -1,6 +1,6 @@
-# CreatureLens
+# KlasphoDex by Nadief Aqila Rabbani 
 
-CreatureLens is a Flutter mobile app that turns captured detected object photos using Google ML kit into fantasy creatures with OpenRouter vision models for the class demo, stores the collection locally, and syncs player data with Firebase.
+KlasphoDex is a Flutter mobile app that turns captured detected object photos using Google ML kit into fantasy creatures with OpenRouter vision models for the class demo, stores the collection locally, and syncs player data with Firebase.
 
 ## Requirements
 
