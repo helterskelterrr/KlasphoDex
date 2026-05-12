@@ -1,0 +1,1 @@
+export {generateCreature} from "./generateCreature";

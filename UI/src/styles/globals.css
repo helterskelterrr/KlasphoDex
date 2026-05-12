@@ -1,0 +1,137 @@
+/* CreatureLens design tokens */
+:root {
+  /* Surfaces */
+  --cl-void: #0A0A0A;
+  --cl-midnight: #111111;
+  --cl-charcoal: #1A1414;
+  --cl-surface: #15100F;
+  --cl-surface-2: #221818;
+  --cl-line: #2A1F1F;
+  --cl-line-strong: #3A2828;
+
+  /* Text */
+  --cl-text: #F5F1E8;
+  --cl-text-muted: #C9C2B5;
+  --cl-text-dim: #8A7F76;
+
+  /* Brand */
+  --cl-cyan: #E60012;
+  --cl-teal: #C8102E;
+  --cl-deep: #8B0008;
+  --cl-gold: #FFD300;
+  --cl-amber: #FFA947;
+  --cl-ember: #FF6B4A;
+  --cl-violet: #FFD300;
+  --cl-nature: #43D17A;
+
+  /* Spacing */
+  --cl-radius-sm: 6px;
+  --cl-radius: 10px;
+  --cl-radius-lg: 14px;
+  --cl-radius-xl: 18px;
+}
+
+html, body, #root {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "ss01", "cv11";
+  letter-spacing: -0.005em;
+}
+
+body {
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  background: var(--cl-void);
+  color: var(--cl-text);
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+.cl-divider { background: var(--cl-line); height: 1px; }
+
+/* Eyebrow label — small uppercase utility used across the app */
+.cl-eyebrow {
+  color: var(--cl-text-dim);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* Tabular numbers everywhere a stat appears */
+.cl-num { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+
+/* === P5 CHAOS UTILITIES === */
+
+/* Diagonal hatch overlay */
+.cl-hatch::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent 0 10px,
+    rgba(245, 241, 232, 0.04) 10px 12px
+  );
+}
+
+/* Aggressive halftone dot overlay */
+.cl-halftone::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.18;
+  background-image: radial-gradient(#0A0A0A 1.4px, transparent 1.6px);
+  background-size: 6px 6px;
+  background-position: 0 0;
+  mix-blend-mode: multiply;
+}
+
+.cl-halftone-light::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.22;
+  background-image: radial-gradient(#F5F1E8 1px, transparent 1.4px);
+  background-size: 5px 5px;
+}
+
+/* Skewed parallelogram panel — the P5 menu staple */
+.cl-skew { transform: skewX(-8deg); }
+.cl-skew-inner { transform: skewX(8deg); display: inline-block; }
+
+/* Italic display title — bold chunky oblique */
+.cl-display {
+  font-style: italic;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+/* Hard offset shadow — comic-cover punch */
+.cl-pop {
+  box-shadow:
+    4px 4px 0 #0A0A0A,
+    4px 4px 0 1px #E60012;
+}
+.cl-pop-yellow {
+  box-shadow:
+    4px 4px 0 #0A0A0A,
+    4px 4px 0 1px #FFD300;
+}
+
+/* Stamp / seal red ribbon for badges */
+.cl-stamp {
+  background: #E60012;
+  color: #F5F1E8;
+  border: 2px solid #0A0A0A;
+  box-shadow: 2px 2px 0 #FFD300;
+  transform: rotate(-3deg);
+  display: inline-block;
+}
+

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "649702885159",
+    "project_id": "klasphodex-6b9e4",
+    "storage_bucket": "klasphodex-6b9e4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:649702885159:android:e630f14e4159c91d6e4b02",
+        "android_client_info": {
+          "package_name": "com.creaturelens.creature_lens"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFic7CWGAQEPPnA90TCYOZ7kJj59kocuE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
