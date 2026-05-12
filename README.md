@@ -1,6 +1,6 @@
 # CreatureLens
 
-CreatureLens is a Flutter mobile app that turns captured object photos into fantasy creatures with OpenRouter vision models for the class demo, stores the collection locally, and syncs player data with Firebase.
+CreatureLens is a Flutter mobile app that turns captured detected object photos using Google ML kit into fantasy creatures with OpenRouter vision models for the class demo, stores the collection locally, and syncs player data with Firebase.
 
 ## Requirements
 
