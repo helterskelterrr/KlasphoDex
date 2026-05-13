@@ -1,6 +1,6 @@
-# CreatureLens
+# KlasphoDex by Nadief Aqila Rabbani 
 
-CreatureLens is a Flutter mobile app that turns captured object photos into fantasy creatures with OpenRouter vision models for the class demo, stores the collection locally, and syncs player data with Firebase.
+KlasphoDex is a Flutter mobile app that turns captured detected object photos using Google ML kit into fantasy creatures with OpenRouter vision models for the class demo, stores the collection locally, and syncs player data with Firebase.
 
 ## Requirements
 
@@ -92,6 +92,21 @@ flutter test
 cd functions && npm test
 ```
 
+## Screenshots
+<img width="596" height="1280" alt="image" src="https://github.com/user-attachments/assets/37e05b39-c298-4383-a7e0-621b8a33a84a" />
+
+<img width="596" height="1280" alt="image" src="https://github.com/user-attachments/assets/9261c2a0-58df-4e6b-b4d9-30c1439678f2" />
+
+<img width="596" height="1280" alt="image" src="https://github.com/user-attachments/assets/b9ea21b1-6089-4a61-81c8-83694dfc836f" />
+
+<img width="596" height="1280" alt="image" src="https://github.com/user-attachments/assets/2a543afe-05b3-4d6a-80ce-594e93b1c24e" />
+
+<img width="596" height="1280" alt="image" src="https://github.com/user-attachments/assets/523f7df5-bb8e-4c11-a4ce-99ad17d897e2" />
+
+<img width="596" height="1280" alt="image" src="https://github.com/user-attachments/assets/6688c1d0-44bc-4593-9912-07956a539077" />
+
+
 ## Privacy Notes
 
 The selected scan photo, a generic scan label, and progression context are sent to OpenRouter for creature generation in the demo build. The captured photo is stored locally as the creature card image. The app uses anonymous Firebase accounts for sync without requiring email or social login.
+
