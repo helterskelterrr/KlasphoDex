@@ -101,9 +101,11 @@ cd functions && npm test
 
 <img width="596" height="1280" alt="image" src="https://github.com/user-attachments/assets/2a543afe-05b3-4d6a-80ce-594e93b1c24e" />
 
-<img width="596" height="1280" alt="image" src="https://github.com/user-attachments/assets/523f7df5-bb8e-4c11-a4ce-99ad17d897e2" />
+<img width="596" height="1280" alt="image" src="https://github.com/user-attachments/assets/d33d9150-3bed-4820-a0bf-72fa865e2cc4" />
 
-<img width="596" height="1280" alt="image" src="https://github.com/user-attachments/assets/6688c1d0-44bc-4593-9912-07956a539077" />
+<img width="596" height="1280" alt="image" src="https://github.com/user-attachments/assets/2ee0a74f-c367-4779-a2cb-52cde73a56d9" />
+
+<img width="596" height="1280" alt="image" src="https://github.com/user-attachments/assets/adcf93a2-5df3-46d5-9fbb-33f040a97a4a" />
 
 
 ## Privacy Notes
