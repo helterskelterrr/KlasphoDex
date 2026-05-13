@@ -33,6 +33,58 @@ void main() {
     await tempDir.delete(recursive: true);
   });
 
+  test(
+    'still completes a victory result when user reward persistence fails',
+    () async {
+      final creatures = _deckCreatures();
+      final syncService = SyncService(syncBox);
+      final container = ProviderContainer(
+        overrides: [
+          initialUserProvider.overrideWithValue(_user()),
+          userRepositoryProvider.overrideWithValue(_FailingUserRepository()),
+          creatureStorageProvider.overrideWithValue(
+            CreatureStorage(creatureBox),
+          ),
+          trialResultStorageProvider.overrideWithValue(
+            TrialResultStorage(resultBox),
+          ),
+          syncServiceProvider.overrideWithValue(syncService),
+        ],
+      );
+      addTearDown(container.dispose);
+
+      for (final creature in creatures) {
+        await container.read(allCreaturesProvider.notifier).add(creature);
+      }
+
+      final deck = BattleDeck(
+        id: 'deck-1',
+        name: 'Field Deck',
+        creatureIds: creatures.map((creature) => creature.id).toList(),
+        updatedAt: DateTime.utc(2026, 5, 9),
+      );
+
+      container
+          .read(currentBattleProvider.notifier)
+          .startTrial(
+            deck: deck,
+            creatures: creatures,
+            difficulty: TrialDifficulty.calm,
+          );
+      container.read(currentBattleProvider.notifier).playCreature(creatures[0]);
+      container.read(currentBattleProvider.notifier).playCreature(creatures[1]);
+      container.read(currentBattleProvider.notifier).playCreature(creatures[2]);
+
+      final result = await container
+          .read(currentBattleProvider.notifier)
+          .completeBattle();
+
+      expect(result, isNotNull);
+      expect(result!.victory, isTrue);
+      expect(container.read(trialResultsProvider), hasLength(1));
+    },
+  );
+
   test('records victory rewards as XP, shards, and a trial result', () async {
     final creatures = _deckCreatures();
     final syncService = SyncService(syncBox);
@@ -213,6 +265,16 @@ class _RecordingUserRepository implements UserRepository {
 
   @override
   Future<void> saveUser(UserModel user) async {}
+}
+
+class _FailingUserRepository implements UserRepository {
+  @override
+  Future<UserModel> loadOrCreateUser(String uid) async => _user();
+
+  @override
+  Future<void> saveUser(UserModel user) async {
+    throw StateError('User reward persistence failed.');
+  }
 }
 
 List<Creature> _deckCreatures() {

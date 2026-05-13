@@ -919,7 +919,17 @@ class BattleHandCard extends StatelessWidget {
                     Icon(typeIcon(creature.type), color: typeColor, size: 18),
                   ],
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 4),
+                Center(
+                  child: CreaturePortrait(
+                    type: creature.type,
+                    rarity: creature.rarity,
+                    size: 48,
+                    compact: true,
+                    imageUrl: creature.imageUrl,
+                  ),
+                ),
+                const SizedBox(height: 4),
                 Text(
                   creature.name,
                   maxLines: 2,

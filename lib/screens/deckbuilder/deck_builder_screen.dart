@@ -557,8 +557,16 @@ class _DeckSlot extends StatelessWidget {
               )
             : Column(
                 children: [
-                  Icon(typeIcon(creature!.type), color: color, size: 20),
-                  const SizedBox(height: 6),
+                  Expanded(
+                    child: CreaturePortrait(
+                      type: creature!.type,
+                      rarity: creature!.rarity,
+                      size: 42,
+                      compact: true,
+                      imageUrl: creature!.imageUrl,
+                    ),
+                  ),
+                  const SizedBox(height: 2),
                   Text(
                     creature!.name,
                     maxLines: 2,

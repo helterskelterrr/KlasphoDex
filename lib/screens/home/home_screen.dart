@@ -194,7 +194,7 @@ class HomeScreen extends ConsumerWidget {
                     Expanded(
                       child: _SummaryTile(
                         label: 'Creatures',
-                        value: '${user.totalCreatures}',
+                        value: '${allCreatures.length}',
                         icon: Icons.auto_stories_rounded,
                         color: AppColors.scannerCyan,
                       ),

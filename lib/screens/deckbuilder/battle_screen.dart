@@ -17,7 +17,13 @@ class BattleScreen extends ConsumerWidget {
     final state = ref.watch(currentBattleProvider);
     final creatures = ref.watch(allCreaturesProvider);
     final byId = {for (final creature in creatures) creature.id: creature};
-    final compactHeight = MediaQuery.sizeOf(context).height < 720;
+    final screenHeight = MediaQuery.sizeOf(context).height;
+    final compactHeight = screenHeight < 720;
+    final handHeight = screenHeight < 640
+        ? 192.0
+        : compactHeight
+        ? 200.0
+        : 234.0;
 
     return Scaffold(
       body: CreatureLensBackground(
@@ -199,14 +205,26 @@ class BattleScreen extends ConsumerWidget {
                             final result = await ref
                                 .read(currentBattleProvider.notifier)
                                 .completeBattle();
-                            if (context.mounted) {
-                              context.goNamed('fieldResult', extra: result);
+                            if (!context.mounted) return;
+                            if (result == null) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text(
+                                    'Could not finalize trial result.',
+                                  ),
+                                ),
+                              );
+                              return;
                             }
+                            context.pushReplacementNamed(
+                              'fieldResult',
+                              extra: result,
+                            );
                           },
                         )
                       else ...[
                         SizedBox(
-                          height: compactHeight ? 148 : 182,
+                          height: handHeight,
                           child: ListView.separated(
                             scrollDirection: Axis.horizontal,
                             itemCount: state.hand.length,

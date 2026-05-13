@@ -187,7 +187,7 @@ class ProfileScreen extends ConsumerWidget {
                   children: [
                     _ProfileStat(
                       label: 'Total Creatures',
-                      value: '${user.totalCreatures}',
+                      value: '${creatures.length}',
                       icon: Icons.auto_stories_rounded,
                       color: AppColors.scannerCyan,
                     ),

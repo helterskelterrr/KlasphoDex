@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/battle_deck.dart';
@@ -95,11 +96,19 @@ class BattleNotifier extends Notifier<BattleState?> {
       shardsGained: current.victory ? config.shardReward : 0,
     );
 
-    await ref.read(userProvider.notifier).addXp(result.xpGained);
+    try {
+      await ref.read(userProvider.notifier).addXp(result.xpGained);
+    } catch (error) {
+      debugPrint('Trial XP persistence failed: $error');
+    }
     if (result.shardCreatureId != null && result.shardsGained > 0) {
-      await ref
-          .read(allCreaturesProvider.notifier)
-          .addShardsToCreature(result.shardCreatureId!, result.shardsGained);
+      try {
+        await ref
+            .read(allCreaturesProvider.notifier)
+            .addShardsToCreature(result.shardCreatureId!, result.shardsGained);
+      } catch (error) {
+        debugPrint('Trial shard persistence failed: $error');
+      }
     }
     await ref.read(trialResultsProvider.notifier).add(result);
     _completedResult = result;

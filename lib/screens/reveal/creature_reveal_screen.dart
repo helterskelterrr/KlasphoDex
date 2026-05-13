@@ -56,10 +56,12 @@ class _CreatureRevealScreenState extends ConsumerState<CreatureRevealScreen>
   Future<void> _addToCollection() async {
     await ref.read(allCreaturesProvider.notifier).add(_creature);
     if (!mounted) return;
+    // Read the creature count after the add operation to ensure it's up-to-date.
+    final currentCount = ref.read(allCreaturesProvider).length;
     await ref.read(userProvider.notifier).addXp(_creature.xpReward);
     await ref
         .read(userProvider.notifier)
-        .setTotalCreatures(ref.read(allCreaturesProvider).length);
+        .setTotalCreatures(currentCount);
     if (!mounted) return;
     context.goNamed('pokedex');
   }
